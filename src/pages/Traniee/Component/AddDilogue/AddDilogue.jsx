@@ -62,7 +62,7 @@ class AddDilogue extends React.Component {
       evt.preventDefault();
       return;
     }
-    const { name,email, password, confirmPassword } = this.state;
+    const { email, password } = this.state;
     alert(`Signed up with email: ${email} password: ${password}`);
   };
 
