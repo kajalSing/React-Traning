@@ -19,7 +19,7 @@ const loginSchema = yup.object().shape({
   email: yup.string()
     .email('Email is invalid')
     .required('Email is required'),
-  password: yup.string()
+    password: yup.string()
     .min(6, 'Password must be at least 6 characters')
     .required('Password is required'),
 });
@@ -90,6 +90,11 @@ class AddDilogue extends React.Component {
             });
           }
         })
+        if (!(error.inner.some(error => error.path === value))) {
+          this.setState({
+            error: { ...error, [value]: '' },
+          });
+        }
       });
   }
 

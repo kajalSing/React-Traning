@@ -8,7 +8,6 @@ import Styles from './style';
 const NoMatch = (props) => {
   const {classes} = props;
   return (
-    
     <div className={classes.noMatch}>
       <Typography
         className={classes.title}

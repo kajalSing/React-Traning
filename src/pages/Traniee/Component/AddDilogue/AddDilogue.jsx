@@ -100,6 +100,11 @@ class AddDilogue extends React.Component {
             });
           }
         })
+        if (!(error.inner.some(error => error.path === value))) {
+          this.setState({
+            error: { ...error, [value]: '' },
+          });
+        }
       });
   }
 
@@ -131,7 +136,7 @@ class AddDilogue extends React.Component {
               paperScrollPaper: classes.paperScrollPaper,
             }}
             onClose={close}
-            open='true'
+            open="true"
           >
             <DialogTitle
               className={classes.title}

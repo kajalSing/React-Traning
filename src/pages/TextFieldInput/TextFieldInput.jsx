@@ -61,6 +61,9 @@ class TextFieldInput extends React.Component {
   // }
 
   handleChange = field => (event) =>  {
+    if((event.target.value).length > 2 || (event.target.value).length <= 10 ) {
+      this.setState({name: null})
+    }
     this.setState({[field]: event.target.value}, 
       () => this.handleValidate((field)));
   }
