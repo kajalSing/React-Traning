@@ -49,6 +49,7 @@ class AddDilogue extends React.Component {
       password:'',
       confirmPassword:'',
       error:'',
+      fixedErrors: '',
       everFocusedEmail: false,
       everFocusedname:false,
       everFocusedPassword: false,
@@ -62,7 +63,7 @@ class AddDilogue extends React.Component {
       evt.preventDefault();
       return;
     }
-    const { email, password } = this.state;
+    const { name, email, password,confirmPassword } = this.state;
     alert(`Signed up with email: ${email} password: ${password}`);
   };
 
@@ -80,16 +81,26 @@ class AddDilogue extends React.Component {
     const { close } = this.props;
     close();
   }
+
+  getError = () => {
+    const { fixedErrors } = this.state;
+    if(!fixedErrors) {
+      return true;
+    }
+    return false
+  }
+
   handleValidate = (value) => {
-    const { name , email, password, confirmPassword } = this.state;
+    const { name , email, password, confirmPassword } = this.state; 
     fromSchema.validate(
       {name , email, password, confirmPassword},
       {abortEarly : false}
     )
       .then(() =>{
-        const { error } = this.state;
+        const { error, fixedErrors } = this.state;
         console.log('success submitted');
         this.setState({
+          fixedErrors: '',
           error: { ...error, [value]: ''}})
       })
       .catch((error) => {
@@ -97,6 +108,7 @@ class AddDilogue extends React.Component {
           if (errors.path === value) {
             this.setState({
               error: { ...error, [value]: errors.message },
+              fixedErrors: { ...error }
             });
           }
         })
@@ -198,6 +210,7 @@ class AddDilogue extends React.Component {
                 <Button
                   className={classes.button}
                   component="span"
+                  //disabled={this.getError()}
                   disabled={isDisabled}
                   variant="contained"
                   

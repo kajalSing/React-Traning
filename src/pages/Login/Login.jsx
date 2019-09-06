@@ -106,6 +106,7 @@ class AddDilogue extends React.Component {
       password
     } = this.state;
     const errors = validate(this.state.email, this.state.password);
+    const isEnabled = email.length > 0 && password.length > 0;
     const isDisabled = Object.keys(errors).some(x => errors[x]);
 
     return (

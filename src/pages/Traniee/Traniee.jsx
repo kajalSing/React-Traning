@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 import Styles from './style';
 import AddDilogue from '../Traniee/Component/AddDilogue';
+import TraineeList from './traineelist';                
 
 
 class Traniee extends Component {
@@ -41,6 +42,7 @@ class Traniee extends Component {
           close={this.handleClick}
           open={openDialog}
         /> : ''}
+        <TraineeList />
       </div>
     )
   }

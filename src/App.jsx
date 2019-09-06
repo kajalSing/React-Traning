@@ -9,7 +9,8 @@ import { NoMatch } from './pages/NoMatch';
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import {Trainee} from './pages/Traniee';
 import {TextFieldInput} from './pages/TextFieldInput';
-
+import ShortedTable from './Components/ShortedTable';
+import ChildrenDemo from './pages/ChildrenDemo/ChildernDemo';
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,11 @@ class App extends React.Component {
       <MuiThemeProvider >
         <Router>
           <Switch>
+            {/* <AuthRoute
+              component={ShortedTable}
+              exact
+              path="/"
+            /> */}
             <PrivateRoute
               component={Login}
               exact
@@ -37,7 +43,11 @@ class App extends React.Component {
               exact
               path="/inputfield"
             />
-           
+            <AuthRoute
+              component={ChildrenDemo}
+              exact
+              path="/children"
+            />
             <AuthRoute
               component={NoMatch}
             />
@@ -47,5 +57,6 @@ class App extends React.Component {
     );
   }
 }
+// https://codesandbox.io/s/jrze53pqr?from-embed
 
 export default App;

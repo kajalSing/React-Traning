@@ -14,6 +14,7 @@ const userSchema = yup.object().shape({
     .required('Name is Required')
     .label('Name'),
   selectfield: yup.string()
+  
 });
 
 class TextFieldInput extends React.Component {
@@ -37,17 +38,7 @@ class TextFieldInput extends React.Component {
       }
     };   
   }  
-  // isError=(val)=>{
-  //   const{error} = this.state;
-  //   if(name === '')
-  //   {
-  //     error.name=val;
-  //     this.setState({error});
-  //   }
-   
-  //   console.log('hello');
-  // }
-  //error.name="sjdhkjsa"
+
    
   handleclick = (event) => {
     this.setState({
@@ -56,9 +47,6 @@ class TextFieldInput extends React.Component {
       footballOption:event.target.value,
     });
   }
-  // handleName=()=>{
-
-  // }
 
   handleChange = field => (event) =>  {
     if((event.target.value).length > 2 || (event.target.value).length <= 10 ) {
@@ -127,6 +115,7 @@ class TextFieldInput extends React.Component {
           selectOption={selectOption}
 
         />
+        {error.selectOption ? <div className={classes.error}>{error.selectOption}</div> : ''}
         <RadioButtonGroup
           cricketOption={cricketOption}
           footballOption={footballOption}
